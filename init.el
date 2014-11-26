@@ -63,8 +63,8 @@
 
 ; set path to look in more than just /bin /usr/bin /sbin /usr/sbin
 ;(setq path "/home/acl/.rvm/gems/ruby-1.9.3-p448/bin:/home/acl/.rvm/gems/ruby-1.9.3-p448@global/bin:/home/acl/.rvm/rubies/ruby-1.9.3-p448/bin:/home/acl/.rvm/bin:/home/acl/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/acl/.rvm/bin")
-(setq path "/home/intern/.rvm/gems/ruby-1.9.3-p448/bin:/home/intern/.rvm/gems/ruby-1.9.3-p448@global/bin:/home/intern/.rvm/rubies/ruby-1.9.3-p448/bin:/home/intern/.rvm/bin:/home/intern/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/intern/.rvm/bin")
-(setenv "PATH" path)
+;(setq path "/home/intern/.rvm/gems/ruby-1.9.3-p448/bin:/home/intern/.rvm/gems/ruby-1.9.3-p448@global/bin:/home/intern/.rvm/rubies/ruby-1.9.3-p448/bin:/home/intern/.rvm/bin:/home/intern/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/intern/.rvm/bin")
+;(setenv "PATH" path)
 
 ; give windows unique names instead of just <2> etc.
 (setq uniquify-buffer-name-style 'post-foward-angle-brackets)
@@ -138,8 +138,8 @@
 ; make it so RVM is usable in the shell
 (add-to-list 'load-path
               "~/.emacs.d/plugins")
-(require 'rvm)
-(rvm-use-default)
+;(require 'rvm)
+;(rvm-use-default)
 
 ; disable the menu bar (especially in terminal mode!)
 (menu-bar-mode -1)

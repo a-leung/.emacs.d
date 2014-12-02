@@ -137,7 +137,7 @@
 
 ; make it so RVM is usable in the shell
 (add-to-list 'load-path
-	      "~/.emacs.d/plugins")
+              "~/.emacs.d/plugins")
 (require 'rvm)
 (rvm-use-default)
 
@@ -241,3 +241,5 @@
 ;(add-to-list 'auto-mode-alist '("\\.erb\\" . web-mode)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'evenhold t)
+
+(global-auto-revert-mode t)

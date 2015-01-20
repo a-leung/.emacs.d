@@ -135,13 +135,6 @@
 
 (show-paren-mode)
 
-; make it so RVM is usable in the shell
-(add-to-list 'load-path
-	      "~/.emacs.d/plugins")
-(require 'rvm)
-(rvm-use-default)
-(require 'yaml-mode)
-
 ; disable the menu bar (especially in terminal mode!)
 (menu-bar-mode -1)
 
@@ -244,3 +237,42 @@
 (load-theme 'evenhold t)
 
 (global-auto-revert-mode t)
+
+; =================
+; ruby/rails config
+; =================
+; via: http://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
+
+(require 'package)
+(add-to-list 'package-archives
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+    '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
+
+; make it so RVM is usable in the shell
+(add-to-list 'load-path
+              "~/.emacs.d/plugins")
+(require 'rvm)
+(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
+
+(require 'yaml-mode)
+
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+(require 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+
+(defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+  (rvm-activate-corresponding-ruby))
+
+(add-hook 'after-init-hook 'global-company-mode)
+(global-company-mode t)
+(push 'company-robe company-backends)
+
+; start inf-ruby
+; then start robe-start
+; ala: https://github.com/dgutov/robe/issues/22

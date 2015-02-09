@@ -254,7 +254,7 @@
 
 ; make it so RVM is usable in the shell
 (add-to-list 'load-path
-              "~/.emacs.d/plugins")
+	      "~/.emacs.d/plugins")
 (require 'rvm)
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 

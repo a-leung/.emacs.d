@@ -34,7 +34,10 @@
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(column-number-mode t)
- '(custom-safe-themes (quote ("de538b2d1282b23ca41ac5d8b69c033b911521fe27b5e1f59783d2eb20384e1f" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
+ '(custom-safe-themes
+   (quote
+    ("de538b2d1282b23ca41ac5d8b69c033b911521fe27b5e1f59783d2eb20384e1f" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
+ '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -170,9 +173,11 @@
 ;; add some key support for ansi-term (and other terms)
 (eval-after-load "term"
   '(progn
+     (define-key term-raw-map (kbd "M-j") 'windmove-down)
      (define-key term-raw-map (kbd "M-k") 'windmove-up)
      (define-key term-raw-map (kbd "M-h") 'windmove-left)
      (define-key term-raw-map (kbd "M-l") 'windmove-right)
+
      (define-key term-raw-map (kbd "M-J") (lambda () (interactive) (enlarge-window 1)))
      (define-key term-raw-map (kbd "M-K") (lambda () (interactive) (enlarge-window -1)))
      (define-key term-raw-map (kbd "M-H") (lambda () (interactive) (enlarge-window -1 t)))
@@ -254,7 +259,7 @@
 
 ; make it so RVM is usable in the shell
 (add-to-list 'load-path
-	      "~/.emacs.d/plugins")
+              "~/.emacs.d/plugins")
 (require 'rvm)
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 
@@ -276,3 +281,9 @@
 ; start inf-ruby
 ; then start robe-start
 ; ala: https://github.com/dgutov/robe/issues/22
+
+                                        ; add time to modeline
+(display-time-mode 1)
+
+                                        ;die tabs, die!
+(setq-default indent-tabs-mode nil)

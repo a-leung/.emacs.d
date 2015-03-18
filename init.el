@@ -75,12 +75,38 @@
 ; key maps imported from samk...
 ;(global-set-key (kbd "C-w") 'kill-region)
 
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 90 :width normal)))))
+
+
 ; Mac only
 ; set Mac's command key as Meta key in emacs
-;(setq mac-option-key-is-meta nil)
-;(setq mac-command-key-is-meta t)
-;(setq mac-command-modifier 'meta)
-;(setq mac-option-modifier nil)
+;; key bindings
+(when (eq system-type 'darwin) ;; mac specific settings
+  ;; (setq mac-option-modifier 'alt)
+  ;; (setq mac-command-modifier 'meta)
+  ;; (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+
+  (setq mac-option-key-is-meta nil)
+  (setq mac-command-key-is-meta t)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier nil)
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
+
+  )
+
 
 (defun kill-line-or-region (beg end)
  "kill region if active only or kill line normally"
@@ -190,13 +216,6 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 90 :width normal)))))
 
 (require 'package)
 (add-to-list 'package-archives

@@ -150,51 +150,22 @@
 
 ;;;;;;;;;;;;;;;
 ;; highlights
-
 ; set highlight mode globally
 (global-hl-line-mode 1)
-
 ; set highlight color (use (list-colors-mode) to see list)
 (set-face-background 'hl-line "gray4")
-;(set-face-background 'hl-line "#00E")
-;(set-face-background 'hl-line "magenta")
 ; keep highlights off syntax colors
 (set-face-foreground 'highlight nil)
 (set-face-attribute 'region nil :background "blue4")
 
+; match parenthesis
 (show-paren-mode)
-
-; disable the menu bar (especially in terminal mode!)
-(menu-bar-mode -1)
 
 ; make buffer names unique
 (require 'uniquify)
 (setq
   uniquify-buffer-name-style 'post-forward
   uniquify-separator ":")
-
-;; ; revert all open buffers (i.e. after switching branches on git.)
-;; (defun revert-all-buffers ()
-;;   "Refreshes all open buffers from their respective files."
-;;   (interactive)
-;;   (dolist (buf (buffer-list))
-;;     (with-current-buffer buf
-;;       (when (and (buffer-file-name) (file-exists-p (buffer-file-name)) (not (buffer-modified-p)))
-;;      (revert-buffer t t t) )))
-;;   (message "Refreshed open files.") )
-
-;; ; revert buffers but keep undo history
-;; (defun revert-buffer-keep-undo (&rest -)
-;;   "Revert buffer but keep undo history."
-;;   (interactive)
-;;   (let ((inhibit-read-only t))
-;;     (erase-buffer)
-;;     (insert-file-contents (buffer-file-name))
-;;     (set-visited-file-modtime (visited-file-modtime))
-;;     (set-buffer-modified-p nil)))
-
-;; ; replace 'revert-buffer' with 'revert-buffer-keep-undo'
-;; (setq revert-buffer-function 'revert-buffer-keep-undo)
 
 ;; add some key support for ansi-term (and other terms)
 (eval-after-load "term"
@@ -239,8 +210,6 @@
 ;;      (setq flycheck-idle-change-delay 1)
 ;;      (setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))))
 
-
-
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
 (defadvice switch-to-buffer (before save-buffer-now activate)
@@ -257,6 +226,8 @@
   (when buffer-file-name (save-buffer)))
 
 ;(add-to-list 'auto-mode-alist '("\\.erb\\" . web-mode)
+
+; load theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'evenhold t)
 
@@ -300,9 +271,13 @@
 ; start inf-ruby
 ; then start robe-start
 ; ala: https://github.com/dgutov/robe/issues/22
-
-                                        ; add time to modeline
+; add time to modeline
 (display-time-mode 1)
 
-                                        ;die tabs, die!
+;die tabs, die!
 (setq-default indent-tabs-mode nil)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+; for hs-org mode binding!
+(global-set-key "\C-ch" 'hs-org/minor-mode)

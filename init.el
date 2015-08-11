@@ -57,6 +57,7 @@
  (set-face-background 'rst-level-6-face nil))
 (add-hook 'rst-mode-hook 'andrew-rst-faces)
 (add-hook 'rst-mode-hook 'auto-fill-mode)
+
 ; set transparency
  (set-frame-parameter (selected-frame) 'alpha '(90 80))
  (add-to-list 'default-frame-alist '(alpha 90 80))
@@ -281,3 +282,6 @@
 
 ; for hs-org mode binding!
 (global-set-key "\C-ch" 'hs-org/minor-mode)
+
+; set fill-column to be 80
+(set-fill-column 80)

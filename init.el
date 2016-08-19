@@ -46,18 +46,6 @@
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
 
-(defun andrew-rst-faces()
- (interactive)
- (setq rst-level-face-max 0)
- (set-face-background 'rst-level-1-face nil)
- (set-face-background 'rst-level-2-face nil)
- (set-face-background 'rst-level-3-face nil)
- (set-face-background 'rst-level-4-face nil)
- (set-face-background 'rst-level-5-face nil)
- (set-face-background 'rst-level-6-face nil))
-(add-hook 'rst-mode-hook 'andrew-rst-faces)
-(add-hook 'rst-mode-hook 'auto-fill-mode)
-
 ; set transparency
  (set-frame-parameter (selected-frame) 'alpha '(90 80))
  (add-to-list 'default-frame-alist '(alpha 90 80))
@@ -73,18 +61,6 @@
 ; give windows unique names instead of just <2> etc.
 (setq uniquify-buffer-name-style 'post-foward-angle-brackets)
 
-; key maps imported from samk...
-;(global-set-key (kbd "C-w") 'kill-region)
-
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 90 :width normal)))))
-
-
 ; Mac only
 ; set Mac's command key as Meta key in emacs
 ;; key bindings
@@ -98,16 +74,21 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier nil)
 
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 80 :width normal)))))
+)
+
+;; 80 for regular monitor
+;; 190 for hdpi monitor
+(custom-set-faces
  '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
 
-  )
-
+; 130 for monitor
+; 80 for external screen
 
 (defun kill-line-or-region (beg end)
  "kill region if active only or kill line normally"
@@ -285,3 +266,9 @@
 
 ; set fill-column to be 80
 (set-fill-column 80)
+
+;; web-mode config
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-attr-indent-offset)
